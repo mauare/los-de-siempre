@@ -1,0 +1,75 @@
+---
+import ImagePlaceholder from './ImagePlaceholder.astro';
+import WhatsAppButton from './WhatsAppButton.astro';
+import { site } from '../content/site';
+
+interface Props {
+  image?: string | null;
+}
+
+const { image = null } = Astro.props;
+---
+
+<section id="inicio" class="relative flex h-screen min-h-[640px] w-full items-center justify-center overflow-hidden bg-ink-950">
+  <div id="hero-bg" class="absolute inset-0 h-[120%] w-full">
+    {image ? (
+      <img src={image} alt="" class="h-full w-full object-cover" />
+    ) : (
+      <ImagePlaceholder label="Foto de fondo: interior del local o plato destacado" class="h-full w-full" />
+    )}
+  </div>
+  <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80"></div>
+
+  <div class="relative z-10 mx-auto flex max-w-4xl flex-col items-center gap-6 px-4 text-center animate-fade-in">
+    <span class="rounded-full border border-white/30 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-white/90">
+      {site.address.neighborhood}, {site.address.city}
+    </span>
+    <h1 class="font-display text-4xl font-black leading-tight text-white sm:text-6xl">
+      {site.tagline}
+    </h1>
+    <p class="max-w-xl text-base text-white/80 sm:text-lg">
+      Cafetería, desayunos, comidas rápidas, viandas y delivery — todo en un mismo lugar.
+    </p>
+    <div class="mt-2 flex flex-col gap-4 sm:flex-row">
+      <a
+        href="#menu"
+        class="inline-flex items-center justify-center rounded-full border border-white/40 px-8 py-3 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-ink-950"
+      >
+        Ver menú
+      </a>
+      <WhatsAppButton variant="inline" label="Pedir ahora" />
+    </div>
+  </div>
+
+  <a
+    href="#menu"
+    aria-label="Bajar a la siguiente sección"
+    class="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 animate-bounce text-white/80 hover:text-white"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" class="h-8 w-8">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+    </svg>
+  </a>
+</section>
+
+<script>
+  const heroBg = document.getElementById('hero-bg');
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (heroBg && !prefersReducedMotion) {
+    let ticking = false;
+    window.addEventListener(
+      'scroll',
+      () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => {
+          const offset = Math.min(window.scrollY * 0.15, 120);
+          heroBg.style.transform = `translateY(${offset}px)`;
+          ticking = false;
+        });
+      },
+      { passive: true }
+    );
+  }
+</script>

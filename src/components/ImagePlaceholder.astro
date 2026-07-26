@@ -1,0 +1,20 @@
+---
+interface Props {
+  label: string;
+  class?: string;
+}
+
+const { label, class: className = '' } = Astro.props;
+---
+
+<div
+  class={`flex flex-col items-center justify-center gap-2 bg-ink-100 dark:bg-ink-800 text-ink-400 dark:text-ink-500 border border-dashed border-ink-300 dark:border-ink-600 ${className}`}
+  role="img"
+  aria-label={label}
+>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="h-8 w-8 opacity-60">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3 4.5h18M4.5 4.5v15a1.5 1.5 0 001.5 1.5h12a1.5 1.5 0 001.5-1.5v-15" />
+    <circle cx="9" cy="9" r="1.5" fill="currentColor" stroke="none" />
+  </svg>
+  <span class="px-3 text-center text-xs font-medium">{label}</span>
+</div>

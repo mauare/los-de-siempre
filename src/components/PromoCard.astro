@@ -1,0 +1,31 @@
+---
+import ImagePlaceholder from './ImagePlaceholder.astro';
+import type { Promo } from '../content/promos';
+
+interface Props {
+  promo: Promo;
+}
+
+const { promo } = Astro.props;
+---
+
+<article class="flex flex-col overflow-hidden rounded-2xl border border-ink-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-ink-800 dark:bg-ink-900">
+  <div class="aspect-16/10 w-full overflow-hidden">
+    {promo.image ? (
+      <img
+        src={promo.image}
+        alt={promo.name}
+        loading="lazy"
+        decoding="async"
+        class="h-full w-full object-cover"
+      />
+    ) : (
+      <ImagePlaceholder label={`Foto: ${promo.name}`} class="h-full w-full" />
+    )}
+  </div>
+  <div class="flex flex-1 flex-col gap-2 p-5">
+    <h3 class="font-display text-lg font-bold text-ink-950 dark:text-white">{promo.name}</h3>
+    <p class="flex-1 text-sm text-ink-600 dark:text-ink-300">{promo.description}</p>
+    <p class="font-display text-xl font-black text-brand-600 dark:text-brand-400">{promo.price}</p>
+  </div>
+</article>

@@ -1,0 +1,191 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+import CategoryCard from '../components/CategoryCard.astro';
+import PromoCard from '../components/PromoCard.astro';
+import Gallery from '../components/Gallery.astro';
+import TestimonialCard from '../components/TestimonialCard.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+import ImagePlaceholder from '../components/ImagePlaceholder.astro';
+import { site } from '../content/site';
+import { categories } from '../content/categories';
+import { promos } from '../content/promos';
+import { testimonials } from '../content/testimonials';
+import { galleryImages } from '../content/gallery';
+
+const mapsEmbedSrc = `https://www.google.com/maps?q=${encodeURIComponent(
+  site.address.mapsQuery
+)}&output=embed`;
+---
+
+<Layout>
+  <Hero />
+
+  <!-- Categorías / Menú -->
+  <section id="menu" class="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
+    <SectionTitle
+      eyebrow="Nuestro menú"
+      title="Todo lo que buscás, en un solo lugar"
+      subtitle="Desde el primer café de la mañana hasta la vianda que llevás a casa."
+      data-reveal
+    />
+    <div class="mt-12 grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-3 lg:grid-cols-5" data-reveal>
+      {categories.map((category) => (
+        <CategoryCard category={category} />
+      ))}
+    </div>
+  </section>
+
+  <!-- Promociones -->
+  <section id="promociones" class="bg-ink-100 py-24 dark:bg-ink-900/40">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <SectionTitle
+        eyebrow="Promociones"
+        title="Combos pensados para vos"
+        subtitle="Ofertas especiales para cada momento del día."
+        data-reveal
+      />
+      <div class="mt-12" data-reveal>
+        {promos.length === 0 ? (
+          <p class="mx-auto max-w-md text-center text-sm text-ink-500 dark:text-ink-400">
+            Muy pronto vamos a publicar acá nuestras promociones vigentes.
+          </p>
+        ) : (
+          <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {promos.map((promo) => (
+              <PromoCard promo={promo} />
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <!-- Galería -->
+  <section id="galeria" class="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
+    <SectionTitle
+      eyebrow="Galería"
+      title="Un vistazo a Los de Siempre"
+      subtitle="El local y nuestra comida, en imágenes."
+      data-reveal
+    />
+    <div class="mt-12" data-reveal>
+      <Gallery images={galleryImages} />
+    </div>
+  </section>
+
+  <!-- Sobre Nosotros -->
+  <section id="nosotros" class="bg-ink-950 py-24 text-white">
+    <div class="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
+      <div class="flex flex-col gap-6" data-reveal>
+        <SectionTitle
+          eyebrow="Sobre nosotros"
+          title="Nuestra historia"
+          align="left"
+          light
+        />
+        <p class="text-ink-300">
+          Estamos terminando de escribir nuestra historia — muy pronto vas a poder conocer más sobre Los de Siempre acá.
+        </p>
+        <ul class="mt-2 grid grid-cols-1 gap-3 sm:grid-cols-2">
+          {[
+            'Ingredientes frescos',
+            'Atención rápida',
+            'Delivery',
+            'Ambiente familiar',
+          ].map((value) => (
+            <li class="flex items-center gap-2 text-sm text-ink-100">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5 shrink-0 text-brand-500">
+                <path fill-rule="evenodd" d="M16.704 5.29a1 1 0 010 1.42l-7.5 7.5a1 1 0 01-1.42 0l-3.5-3.5a1 1 0 111.42-1.42l2.79 2.79 6.79-6.79a1 1 0 011.42 0z" clip-rule="evenodd" />
+              </svg>
+              {value}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="aspect-4/3 overflow-hidden rounded-2xl" data-reveal>
+        <ImagePlaceholder label="Foto: equipo o interior del local" class="h-full w-full" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Delivery -->
+  <section id="delivery" class="mx-auto max-w-4xl px-4 py-24 text-center sm:px-6 lg:px-8">
+    <SectionTitle
+      eyebrow="Delivery"
+      title="Pedí sin salir de tu casa"
+      data-reveal
+    />
+    <div class="mt-6 flex flex-col gap-2 text-ink-600 dark:text-ink-300" data-reveal>
+      <p>{site.delivery.ownRadius}</p>
+      <p>{site.delivery.outsideRadius}</p>
+    </div>
+    <div class="mt-10" data-reveal>
+      <WhatsAppButton variant="giant" />
+    </div>
+  </section>
+
+  <!-- Opiniones -->
+  <section class="bg-ink-100 py-24 dark:bg-ink-900/40">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <SectionTitle
+        eyebrow="Opiniones"
+        title="Lo que dicen nuestros clientes"
+        data-reveal
+      />
+      <div class="mt-12" data-reveal>
+        {testimonials.length === 0 ? (
+          <p class="mx-auto max-w-md text-center text-sm text-ink-500 dark:text-ink-400">
+            Muy pronto vamos a compartir acá las opiniones de nuestros clientes.
+          </p>
+        ) : (
+          <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {testimonials.map((testimonial) => (
+              <TestimonialCard testimonial={testimonial} />
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <!-- Ubicación -->
+  <section id="contacto" class="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
+    <SectionTitle
+      eyebrow="Ubicación"
+      title="Encontranos en Liniers"
+      data-reveal
+    />
+    <div class="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-2" data-reveal>
+      <div class="overflow-hidden rounded-2xl border border-ink-200 dark:border-ink-800">
+        <iframe
+          src={mapsEmbedSrc}
+          title={`Mapa de ubicación de ${site.name}`}
+          class="h-80 w-full lg:h-full"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+      <div class="flex flex-col justify-center gap-6 rounded-2xl border border-ink-200 p-8 dark:border-ink-800">
+        <div>
+          <h3 class="font-display text-sm font-bold uppercase tracking-wide text-ink-500 dark:text-ink-400">Dirección</h3>
+          <p class="mt-1 text-lg text-ink-950 dark:text-white">{site.address.street}, {site.address.neighborhood}</p>
+        </div>
+        <div>
+          <h3 class="font-display text-sm font-bold uppercase tracking-wide text-ink-500 dark:text-ink-400">Horarios</h3>
+          <ul class="mt-1 space-y-1 text-ink-950 dark:text-white">
+            {site.hours.map((h) => (
+              <li>{h.days}: {h.range}</li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-display text-sm font-bold uppercase tracking-wide text-ink-500 dark:text-ink-400">Contacto</h3>
+          <p class="mt-1 text-ink-950 dark:text-white">{site.phone.display}</p>
+        </div>
+        <WhatsAppButton variant="inline" class="w-fit" />
+      </div>
+    </div>
+  </section>
+</Layout>

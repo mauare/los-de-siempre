@@ -1,0 +1,28 @@
+---
+import type { Testimonial } from '../content/testimonials';
+
+interface Props {
+  testimonial: Testimonial;
+}
+
+const { testimonial } = Astro.props;
+---
+
+<figure class="flex h-full flex-col justify-between gap-4 rounded-2xl border border-ink-200 bg-white p-6 shadow-sm dark:border-ink-800 dark:bg-ink-900">
+  <div class="flex gap-1 text-brand-500" aria-label={`${testimonial.rating} de 5 estrellas`}>
+    {Array.from({ length: 5 }).map((_, i) => (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 20 20"
+        fill={i < testimonial.rating ? 'currentColor' : 'none'}
+        stroke="currentColor"
+        stroke-width="1"
+        class="h-4 w-4"
+      >
+        <path d="M10 1.5l2.59 5.25 5.79.84-4.19 4.09.99 5.77L10 14.77l-5.18 2.68.99-5.77L1.62 7.59l5.79-.84L10 1.5z" />
+      </svg>
+    ))}
+  </div>
+  <blockquote class="text-sm text-ink-700 dark:text-ink-200">&ldquo;{testimonial.quote}&rdquo;</blockquote>
+  <figcaption class="font-display text-sm font-bold text-ink-950 dark:text-white">{testimonial.name}</figcaption>
+</figure>

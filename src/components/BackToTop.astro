@@ -1,0 +1,33 @@
+<button
+  id="back-to-top"
+  type="button"
+  aria-label="Volver arriba"
+  class="fixed bottom-5 left-5 z-50 flex h-12 w-12 translate-y-4 items-center justify-center rounded-full bg-ink-950 text-white opacity-0 shadow-lg shadow-black/20 transition-all duration-300 pointer-events-none dark:bg-white dark:text-ink-950"
+>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+  </svg>
+</button>
+
+<script>
+  const button = document.getElementById('back-to-top');
+
+  const setVisible = (visible: boolean) => {
+    if (!button) return;
+    button.classList.toggle('opacity-0', !visible);
+    button.classList.toggle('pointer-events-none', !visible);
+    button.classList.toggle('translate-y-4', !visible);
+  };
+
+  window.addEventListener(
+    'scroll',
+    () => {
+      setVisible(window.scrollY > 500);
+    },
+    { passive: true }
+  );
+
+  button?.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
