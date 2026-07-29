@@ -1,3 +1,8 @@
+export interface Subcategory {
+  slug: string;
+  name: string;
+}
+
 export interface Category {
   slug: string;
   name: string;
@@ -5,42 +10,43 @@ export interface Category {
   description: string;
   /** Ruta a una imagen real en /public/images/categorias/. null hasta tener la foto definitiva. */
   image: string | null;
+  subcategories: Subcategory[];
 }
 
 export const categories: Category[] = [
   {
     slug: 'cafeteria',
     name: 'Cafetería',
-    emoji: '☕',
+    emoji: '',
     description: 'Café de especialidad para disfrutar solo o acompañado.',
     image: null,
+    subcategories: [
+      { slug: 'desayunos', name: 'Desayunos' },
+      { slug: 'meriendas', name: 'Meriendas' },
+    ],
   },
   {
-    slug: 'desayunos',
-    name: 'Desayunos',
-    emoji: '🥐',
-    description: 'Para arrancar el día bien, en el local o para llevar.',
-    image: null,
-  },
-  {
-    slug: 'comidas-rapidas',
-    name: 'Comidas rápidas',
-    emoji: '🍔',
+    slug: 'hamburgueseria',
+    name: 'Hamburguesería',
+    emoji: '',
     description: 'Hamburguesas, sándwiches y mucho más.',
     image: null,
+    subcategories: [],
+  },
+  {
+    slug: 'sandwicheria',
+    name: 'Sándwichería',
+    emoji: '',
+    description: 'Sándwiches caseros para cualquier momento del día.',
+    image: '/images/categorias/sandwicheria.jpeg',
+    subcategories: [],
   },
   {
     slug: 'viandas',
     name: 'Viandas',
-    emoji: '🍱',
+    emoji: '',
     description: 'Comida casera lista para llevar.',
     image: null,
-  },
-  {
-    slug: 'pasteleria',
-    name: 'Pastelería',
-    emoji: '🍰',
-    description: 'Dulces recién hechos para acompañar tu café.',
-    image: null,
+    subcategories: [],
   },
 ];

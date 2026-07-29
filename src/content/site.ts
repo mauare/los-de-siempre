@@ -1,7 +1,7 @@
 export const site = {
   name: 'Los de Siempre',
   shortName: 'LDS',
-  tagline: 'Café, desayunos y las mejores comidas de la ciudad.',
+  tagline: 'Calidad + Precio + Mucho sabor',
   description:
     'Cafetería, desayunos, comidas rápidas, viandas y delivery en el barrio de Liniers.',
   address: {
