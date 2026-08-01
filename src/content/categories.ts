@@ -30,7 +30,7 @@ export const categories: Category[] = [
     name: 'Hamburguesería',
     emoji: '',
     description: 'Hamburguesas, sándwiches y mucho más.',
-    image: null,
+    image: '/images/categorias/hamburguesa.jpeg',
     subcategories: [],
   },
   {

@@ -7,7 +7,6 @@ import PromoCard from '../components/PromoCard.astro';
 import Gallery from '../components/Gallery.astro';
 import TestimonialCard from '../components/TestimonialCard.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
-import ImagePlaceholder from '../components/ImagePlaceholder.astro';
 import { site } from '../content/site';
 import { categories } from '../content/categories';
 import { promos } from '../content/promos';
@@ -20,7 +19,7 @@ const mapsEmbedSrc = `https://www.google.com/maps?q=${encodeURIComponent(
 ---
 
 <Layout>
-  <Hero />
+  <Hero image="/images/interior-local.jpeg" />
 
   <!-- Categorías / Menú -->
   <section id="menu" class="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
@@ -30,7 +29,7 @@ const mapsEmbedSrc = `https://www.google.com/maps?q=${encodeURIComponent(
       subtitle="Desde el primer café de la mañana hasta la vianda que llevás a casa."
       data-reveal
     />
-    <div class="mt-12 grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-3 lg:grid-cols-5" data-reveal>
+    <div class="mt-12 grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-4" data-reveal>
       {categories.map((category) => (
         <CategoryCard category={category} />
       ))}
@@ -105,7 +104,7 @@ const mapsEmbedSrc = `https://www.google.com/maps?q=${encodeURIComponent(
         </ul>
       </div>
       <div class="aspect-4/3 overflow-hidden rounded-2xl" data-reveal>
-        <ImagePlaceholder label="Foto: equipo o interior del local" class="h-full w-full" />
+        <img src="/images/interior-local.jpeg" alt="Interior del local" class="h-full w-full object-cover" />
       </div>
     </div>
   </section>
