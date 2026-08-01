@@ -19,7 +19,7 @@ export const categories: Category[] = [
     name: 'Cafetería',
     emoji: '',
     description: 'Café de especialidad para disfrutar solo o acompañado.',
-    image: null,
+    image: '/images/categorias/cafe.jpeg',
     subcategories: [
       { slug: 'desayunos', name: 'Desayunos' },
       { slug: 'meriendas', name: 'Meriendas' },
@@ -41,12 +41,5 @@ export const categories: Category[] = [
     image: '/images/categorias/sandwicheria.jpeg',
     subcategories: [],
   },
-  {
-    slug: 'viandas',
-    name: 'Viandas',
-    emoji: '',
-    description: 'Comida casera lista para llevar.',
-    image: null,
-    subcategories: [],
-  },
+  
 ];
