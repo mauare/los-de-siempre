@@ -7,8 +7,9 @@ const year = new Date().getFullYear();
 <footer class="border-t border-brand-900 bg-brand-950 text-ink-300">
   <div class="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-4 lg:px-8">
     <div>
-      <p class="font-display text-2xl font-black text-white">
-        <span class="text-brand-500">{site.shortName}</span> {site.name}
+      <p class="flex items-center gap-3 font-display text-2xl font-black text-white">
+        <img src="/images/logo.jpeg" alt={site.name} class="h-10 w-10 rounded-full object-cover" />
+        {site.name}
       </p>
       <p class="mt-3 max-w-xs text-sm text-ink-400">{site.description}</p>
       <div class="mt-5 flex gap-3">
