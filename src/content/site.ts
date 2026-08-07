@@ -3,7 +3,7 @@ export const site = {
   shortName: 'LDS',
   tagline: 'Calidad + Precio + Mucho sabor',
   description:
-    'Cafetería, desayunos, comidas rápidas, viandas y delivery en el barrio de Liniers.',
+    'Cafetería, desayunos, comidas rápidas y delivery en el barrio de Liniers.',
   address: {
     street: 'Lisandro de la Torre 46',
     neighborhood: 'Liniers',
@@ -22,7 +22,7 @@ export const site = {
       `https://wa.me/541140924372?text=${encodeURIComponent(message)}`,
   },
   hours: [
-    { days: 'Lunes a viernes', range: '8:30 a 18:00' },
+    { days: 'Lunes a viernes', range: '8:30 a 17:00' },
     { days: 'Sábados', range: '9:00 a 15:00' },
     { days: 'Domingos', range: 'Cerrado' },
   ],
@@ -32,7 +32,7 @@ export const site = {
     facebook: null as string | null,
   },
   delivery: {
-    ownRadius: 'Delivery propio hasta 4 cuadras a la redonda del local.',
-    outsideRadius: 'Fuera de ese radio, pedí a través de PedidosYa.',
+    ownRadius: 'Delivery propio hasta 4 cuadras.',
+    outsideRadius: 'Fuera de ese radio, a través de PedidosYa.',
   },
 } as const;
